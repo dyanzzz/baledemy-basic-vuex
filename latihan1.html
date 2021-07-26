@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document Vuex</title>
+    <style>
+        body {
+            margin: 5%;
+            font-family: sans-serif;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="app">
+        <h1>{{ $store.state.title }}</h1>
+        <p>State management pattern</p>
+        <p>{{ $store.state.count }}</p>
+        <button @click="handleClick">Counter</button>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/vuex@3.6.2/dist/vuex.js"></script>
+
+    <script>
+        const storeContainer = new Vuex.Store({
+            state: {
+                title: 'Vuex',
+                count: 1
+            },
+            mutations: {
+                increment(state) {
+                    state.count++
+                }
+            },
+            actions: {
+
+            }
+        })
+
+        new Vue({
+            el: '#app',
+            data: {},
+            store: storeContainer,
+            methods: {
+                handleClick() {
+                    this.$store.commit("increment")
+                }
+            },
+        })
+    </script>
+
+</body>
+</html>
